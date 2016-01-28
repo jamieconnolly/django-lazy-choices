@@ -3,6 +3,9 @@ from django.db.models import BLANK_CHOICE_DASH, CharField
 from django.utils import six
 from django.utils.functional import curry
 from django.utils.itercompat import is_iterable
+from django.utils.text import capfirst
+
+from lazy_choices import forms
 
 from .base import LazyChoiceModelMixin
 
@@ -94,3 +97,38 @@ class LazyChoiceField(CharField):
         super(LazyChoiceField, self).contribute_to_class(cls, name)
         if hasattr(cls, '_get_LAZYFIELD_display'):
             setattr(cls, 'get_{0}_display'.format(self.name), curry(cls._get_LAZYFIELD_display, field=self))
+
+    def formfield(self, form_class=None, **kwargs):
+        defaults = {
+            'help_text': self.help_text,
+            'label': capfirst(self.verbose_name),
+            'model': self.model,
+            'required': not self.blank,
+        }
+
+        if self.has_default():
+            if callable(self.default):
+                defaults['initial'] = self.default
+                defaults['show_hidden_initial'] = True
+            else:
+                defaults['initial'] = self.get_default()
+
+        defaults['choices_name'] = self.choices_name
+        defaults['coerce'] = self.to_python
+
+        if self.null:
+            defaults['empty_value'] = None
+
+        # Many of the subclass-specific formfield arguments (min_value,
+        # max_value) don't apply for choice fields, so be sure to only pass
+        # the values that TypedChoiceField will understand.
+        for k in list(kwargs):
+            if k not in ['coerce', 'empty_label', 'empty_value', 'choices_name',
+                         'model', 'required', 'widget', 'label', 'initial',
+                         'help_text', 'error_messages', 'show_hidden_initial']:
+                del kwargs[k]
+
+        defaults.update(kwargs)
+        if form_class is None:
+            form_class = forms.LazyChoiceField
+        return form_class(**defaults)
