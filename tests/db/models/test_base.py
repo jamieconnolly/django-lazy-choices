@@ -2,7 +2,7 @@ from django.db import models
 
 from lazy_choices.db.models import LazyChoiceField, LazyChoiceModelMixin
 
-from . import IsolatedModelsTestCase
+from ... import IsolatedModelsTestCase
 
 
 class LazyChoiceModelMixinTests(IsolatedModelsTestCase):

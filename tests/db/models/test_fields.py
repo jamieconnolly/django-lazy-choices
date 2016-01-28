@@ -1,9 +1,10 @@
 from django.core import checks, exceptions
 from django.db import models
 
+from lazy_choices import forms
 from lazy_choices.db.models import LazyChoiceField, LazyChoiceModelMixin
 
-from . import IsolatedModelsTestCase
+from ... import IsolatedModelsTestCase
 
 
 class LazyChoiceFieldTests(IsolatedModelsTestCase):
@@ -208,3 +209,62 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
 
         with self.assertRaisesMessage(exceptions.ValidationError, "Value 'foo' is not a valid choice."):
             Model._meta.get_field('field').clean('foo', Proxy())
+
+    def test_formfield(self):
+        class Model(models.Model):
+            field = LazyChoiceField()
+
+        field = Model._meta.get_field('field')
+        formfield = field.formfield()
+        self.assertIsInstance(formfield, forms.LazyChoiceField)
+        self.assertEqual(formfield.choices_name, 'FIELD_CHOICES')
+        self.assertEqual(formfield.model, Model)
+
+    def test_formfield_with_default(self):
+        class Model(models.Model):
+            field = LazyChoiceField(default='foo')
+
+        field = Model._meta.get_field('field')
+        self.assertEqual(field.formfield().initial, 'foo')
+
+    def test_formfield_with_callable_default(self):
+        class Model(models.Model):
+            field = LazyChoiceField(default=lambda: 'foo')
+
+        field = Model._meta.get_field('field')
+        formfield = field.formfield()
+        self.assertEqual(formfield.initial, field.default)
+        self.assertEqual(formfield.show_hidden_initial, True)
+
+    def test_formfield_with_form_class(self):
+        class Model(models.Model):
+            field = LazyChoiceField()
+
+        field = Model._meta.get_field('field')
+        klass = forms.LazyChoiceField
+        self.assertIsInstance(field.formfield(form_class=klass), klass)
+
+    def test_formfield_with_nullable_value(self):
+        class Model(models.Model):
+            field = LazyChoiceField(null=True)
+
+        field = Model._meta.get_field('field')
+        self.assertEqual(field.formfield().empty_value, None)
+
+    def test_formfield_with_extra_kwargs(self):
+        class Model(models.Model):
+            field = LazyChoiceField()
+
+        field = Model._meta.get_field('field')
+        formfield = field.formfield(help_text='foo')
+        self.assertEqual(formfield.help_text, 'foo')
+
+    def test_formfield_with_unexpected_kwarg(self):
+        class Model(models.Model):
+            field = LazyChoiceField()
+
+        field = Model._meta.get_field('field')
+        try:
+            field.formfield(foo='bar')
+        except TypeError as err:
+            self.fail(err.message)
