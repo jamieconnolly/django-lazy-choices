@@ -1,0 +1,37 @@
+language: python
+
+install:
+  - pip install tox
+
+script: tox
+matrix:
+  fast_finish: true
+  include:
+    - python: "3.5"
+      env: TOX_ENV=py35-django19
+    - python: "3.4"
+      env: TOX_ENV=py34-django19
+    - python: "2.7"
+      env: TOX_ENV=py27-django19
+    - python: "3.5"
+      env: TOX_ENV=py35-django18
+    - python: "3.4"
+      env: TOX_ENV=py34-django18
+    - python: "3.3"
+      env: TOX_ENV=py33-django18
+    - python: "3.2"
+      env: TOX_ENV=py32-django18
+    - python: "2.7"
+      env: TOX_ENV=py27-django18
+    - python: "2.7"
+      env: TOX_ENV=lint
+
+notifications:
+  email:
+    on_failure: always
+    on_success: never
+
+cache:
+  directories:
+    - $HOME/.cache/pip
+sudo: false
