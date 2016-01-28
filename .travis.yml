@@ -3,7 +3,7 @@ language: python
 install:
   - pip install tox
 
-script: tox
+script: tox -e $TOX_ENV
 matrix:
   fast_finish: true
   include:
