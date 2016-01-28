@@ -25,6 +25,12 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=['Django>=1.8,<1.10'],
+    extras_require={
+        'dev': [
+            'flake8>=2.5,<2.6',
+            'isort>=4.2,<4.3',
+        ]
+    },
     keywords=['django'],
     classifiers=[
         'Development Status :: 3 - Alpha',
