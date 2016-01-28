@@ -17,7 +17,7 @@ setup(
     url='https://github.com/jamieconnolly/django-lazy-choices',
     author='Jamie Connolly',
     author_email='jamie@jamieconnolly.com',
-    description='',
+    description='Lazy choices for Django models',
     license='MIT',
     packages=find_packages('src'),
     package_dir={'': 'src'},
