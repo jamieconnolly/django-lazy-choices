@@ -24,10 +24,13 @@ setup(
     py_modules=[os.path.splitext(os.path.basename(path))[0] for path in glob.glob('src/*.py')],
     include_package_data=True,
     zip_safe=False,
+    install_requires=['Django>=1.8,<1.10'],
     keywords=['django'],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Web Environment',
+        'Framework :: Django :: 1.8',
+        'Framework :: Django :: 1.9',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
@@ -42,4 +45,5 @@ setup(
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
+    test_suite='runtests.runtests',
 )
