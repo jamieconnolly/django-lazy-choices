@@ -1,6 +1,6 @@
 from django.utils.encoding import force_text
 
-from lazy_choices.utils import flatten_choices
+from lazychoices.utils import flatten_choices
 
 
 class LazyChoiceModelMixin(object):

@@ -1,6 +1,6 @@
 from django.contrib.admin import ModelAdmin
 
-from lazy_choices.admin import LazyChoicesFieldListFilter
+from lazychoices.admin import LazyChoicesFieldListFilter
 
 
 class BookAdmin(ModelAdmin):

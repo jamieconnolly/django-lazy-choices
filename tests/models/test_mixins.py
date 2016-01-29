@@ -1,6 +1,6 @@
 from django.db import models
 
-from lazy_choices.models import LazyChoiceField, LazyChoiceModelMixin
+from lazychoices.models import LazyChoiceField, LazyChoiceModelMixin
 
 from .base import IsolatedModelsTestCase
 
