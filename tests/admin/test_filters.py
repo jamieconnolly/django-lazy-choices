@@ -80,7 +80,7 @@ class LazyChoicesFieldListFilterTests(TestCase):
         choices = list(filterspec.choices(changelist))
         self.assertEqual(len(choices), 6)
 
-        self.assertEqual(choices[-1]['display'], '-')
+        self.assertEqual(choices[-1]['display'], filterspec.empty_value_display)
         self.assertEqual(choices[-1]['selected'], True)
         self.assertEqual(choices[-1]['query_string'], '?genre__isnull=True')
 
