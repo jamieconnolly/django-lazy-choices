@@ -7,7 +7,7 @@ from django.utils.text import capfirst
 
 from lazy_choices import forms
 
-from .base import LazyChoiceModelMixin
+from .mixins import LazyChoiceModelMixin
 
 
 class LazyChoiceField(CharField):
