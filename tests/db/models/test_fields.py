@@ -4,7 +4,7 @@ from django.db import models
 from lazy_choices import forms
 from lazy_choices.db.models import LazyChoiceField, LazyChoiceModelMixin
 
-from ... import IsolatedModelsTestCase
+from ...base import IsolatedModelsTestCase
 
 
 class LazyChoiceFieldTests(IsolatedModelsTestCase):
