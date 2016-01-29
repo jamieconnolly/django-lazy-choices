@@ -3,7 +3,7 @@ from django.db import models
 
 from lazy_choices import LazyChoiceField, LazyChoiceModelMixin, forms
 
-from ...base import IsolatedModelsTestCase
+from ..base import IsolatedModelsTestCase
 
 
 class AbstractModel(LazyChoiceModelMixin, models.Model):
