@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 
-from lazy_choices import LazyChoiceField, LazyChoiceModelMixin
+from lazychoices import LazyChoiceField, LazyChoiceModelMixin
 
 
 @python_2_unicode_compatible

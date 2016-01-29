@@ -13,7 +13,7 @@ def get_version(package):
 
 setup(
     name='django-lazy-choices',
-    version=get_version('lazy_choices'),
+    version=get_version('lazychoices'),
     url='https://github.com/jamieconnolly/django-lazy-choices',
     author='Jamie Connolly',
     author_email='jamie@jamieconnolly.com',

@@ -1,8 +1,8 @@
 from django.db import models
 from django.forms.fields import CharField
 
-from lazy_choices import LazyChoiceField, LazyChoiceModelMixin
-from lazy_choices.forms import LazyChoiceModelForm
+from lazychoices import LazyChoiceField, LazyChoiceModelMixin
+from lazychoices.forms import LazyChoiceModelForm
 
 from .base import IsolatedModelsTestCase
 

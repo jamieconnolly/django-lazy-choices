@@ -5,7 +5,7 @@ from django.utils.functional import curry
 from django.utils.itercompat import is_iterable
 from django.utils.text import capfirst
 
-from lazy_choices import forms
+from lazychoices import forms
 
 from .mixins import LazyChoiceModelMixin
 
@@ -33,7 +33,7 @@ class LazyChoiceField(CharField):
                         "'{0}' must be an iterable (e.g., a list or tuple).".format(self.choices_name),
                         hint=None,
                         obj=klass,
-                        id='lazy_choices.E001',
+                        id='lazychoices.E001',
                     )
                 ]
             elif any(isinstance(choice, six.string_types) or
@@ -45,7 +45,7 @@ class LazyChoiceField(CharField):
                          "(actual value, human readable name) tuples.").format(self.choices_name),
                         hint=None,
                         obj=klass,
-                        id='lazy_choices.E002',
+                        id='lazychoices.E002',
                     )
                 ]
             else:
@@ -60,7 +60,7 @@ class LazyChoiceField(CharField):
                     "The model must inherit from 'LazyChoiceModelMixin'.",
                     hint=None,
                     obj=self.model,
-                    id='lazy_choices.E003',
+                    id='lazychoices.E003',
                 )
             ]
         else:

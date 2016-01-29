@@ -3,7 +3,7 @@ import copy
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from lazy_choices.forms.fields import LazyChoiceField
+from lazychoices.forms.fields import LazyChoiceField
 
 from .base import IsolatedModelsTestCase
 

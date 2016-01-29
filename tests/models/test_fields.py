@@ -1,7 +1,7 @@
 from django.core import checks, exceptions
 from django.db import models
 
-from lazy_choices import LazyChoiceField, LazyChoiceModelMixin, forms
+from lazychoices import LazyChoiceField, LazyChoiceModelMixin, forms
 
 from .base import IsolatedModelsTestCase
 
@@ -59,13 +59,13 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
                 "'FIELD_CHOICES' must be an iterable (e.g., a list or tuple).",
                 hint=None,
                 obj=Model,
-                id='lazy_choices.E001',
+                id='lazychoices.E001',
             ),
             checks.Error(
                 "'FIELD_CHOICES' must be an iterable (e.g., a list or tuple).",
                 hint=None,
                 obj=Proxy,
-                id='lazy_choices.E001',
+                id='lazychoices.E001',
             ),
         ]
         self.assertEqual(errors, expected)
@@ -87,13 +87,13 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
                 "'FIELD_CHOICES' must be an iterable containing (actual value, human readable name) tuples.",
                 hint=None,
                 obj=Model,
-                id='lazy_choices.E002',
+                id='lazychoices.E002',
             ),
             checks.Error(
                 "'FIELD_CHOICES' must be an iterable containing (actual value, human readable name) tuples.",
                 hint=None,
                 obj=Proxy,
-                id='lazy_choices.E002',
+                id='lazychoices.E002',
             ),
         ]
         self.assertEqual(errors, expected)
@@ -109,7 +109,7 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
                 "The model must inherit from 'LazyChoiceModelMixin'.",
                 hint=None,
                 obj=Model,
-                id='lazy_choices.E003',
+                id='lazychoices.E003',
             )
         ]
         self.assertEqual(errors, expected)
