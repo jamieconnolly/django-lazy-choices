@@ -1,2 +1,2 @@
-from .base import LazyChoiceModelMixin  # noqa
 from .fields import LazyChoiceField  # noqa
+from .mixins import LazyChoiceModelMixin  # noqa
