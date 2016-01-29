@@ -5,7 +5,7 @@ from django.db import models
 
 from lazy_choices.forms.fields import LazyChoiceField
 
-from ..base import IsolatedModelsTestCase
+from .base import IsolatedModelsTestCase
 
 
 class LazyChoiceFieldTests(IsolatedModelsTestCase):
