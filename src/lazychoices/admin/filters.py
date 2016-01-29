@@ -11,7 +11,12 @@ class LazyChoicesFieldListFilter(ChoicesFieldListFilter):
         self.lookup_kwarg_isnull = '{0}__isnull'.format(field_path)
         self.lookup_val_isnull = request.GET.get(self.lookup_kwarg_isnull)
         super(LazyChoicesFieldListFilter, self).__init__(field, request, params, model, model_admin, field_path)
-        self.empty_value_display = model_admin.get_empty_value_display()
+        if hasattr(model_admin, 'get_empty_value_display'):
+            self.empty_value_display = model_admin.get_empty_value_display()
+        else:
+            # Django < 1.9
+            from django.contrib.admin.views.main import EMPTY_CHANGELIST_VALUE
+            self.empty_value_display = EMPTY_CHANGELIST_VALUE
 
     def expected_parameters(self):
         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
