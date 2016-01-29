@@ -9,7 +9,7 @@ DEFAULT_SETTINGS = dict(
     DATABASES={
         'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': ':memory:'}
     },
-    INSTALLED_APPS=['tests'],
+    INSTALLED_APPS=['tests.forms', 'tests.models'],
     SECRET_KEY='notasecret',
 )
 

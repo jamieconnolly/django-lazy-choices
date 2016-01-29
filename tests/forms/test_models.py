@@ -4,7 +4,7 @@ from django.forms.fields import CharField
 from lazy_choices import LazyChoiceField, LazyChoiceModelMixin
 from lazy_choices.forms import LazyChoiceModelForm
 
-from ..base import IsolatedModelsTestCase
+from .base import IsolatedModelsTestCase
 
 
 class AbstractModel(LazyChoiceModelMixin, models.Model):
