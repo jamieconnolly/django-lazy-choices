@@ -32,11 +32,12 @@ after_success:
 
 deploy:
   provider: pypi
-  user: $PYPI_USER
+  user: jamieconnolly
   password:
-    secure: $PYPI_PASSWORD
+    secure: jNj021qRsV8qEyueD2xBGDrprkg2Ajdl3YVdJtZupI2erYO1UpEQ5JxXjhnCWyDc2JkmSoBA/MH1bMSJ2AEoGlIWrnJY24yR8gEfZ1JEBa7TT534/+h80hBXCNVZTrWi2E7WjvdcG/QZtv0q3+4JSlf/Kywj/tLc3qDTxum/7ZHf2+YlGL5bO4QGwwYxeePTL/J4oUOAhcNLC2wXhvkHJHliG7MJc6y0SEQWGq/rwC1fi4YqX5KASIO8CEA+hLF1zG2Xte0yJj9cNxF/v9Ze4y7LFfwH/phiWRGGG2KCzlKgoOUAlPC468bmruVaKz4e6AZrwMZIdIWlR75UE9ji8sKmjNMITav0aLLZTS7MRVDLP4t1F4nRMf8BulR+Zz2tS2/Zvac5LCLPy10XukwRt594i5onkG8r/7CGf91bsE9wTzN0sVFE7wLN4JiQnb6NUog6yFwtXJGMZQEsiHIXdZsgNQ5E3k6S9K0OUC3OXrEVp/3EEJwUiLhNrqqfeMqpQOYhKx6Ez3t05QuihUFicjquL9floARvMCo62MMV3RLXRyUTUBzHlslWRvCHPnjS6R9zX7FSqk0QqxEEefxBObq7IQCGzoiR4U63weRbcr1kUm6ffNDja2WbOn9zN44boact208eX3dphF9TYwNSz76z2kBBgaDc8TGGN9fP7DE=
   distributions: sdist bdist_wheel
   on:
+    branch: master
     condition: "$TOX_ENV = py27-django19"
     repo: jamieconnolly/django-lazy-choices
     tags: true
