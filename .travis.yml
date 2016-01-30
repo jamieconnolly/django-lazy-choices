@@ -35,7 +35,9 @@ deploy:
   user: $PYPI_USER
   password:
     secure: $PYPI_PASSWORD
+  distributions: sdist bdist_wheel
   on:
+    condition: "$TOXENV = py27-django19"
     repo: jamieconnolly/django-lazy-choices
     tags: true
 
