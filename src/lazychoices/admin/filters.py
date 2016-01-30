@@ -2,6 +2,7 @@ from django.contrib.admin import ChoicesFieldListFilter
 from django.utils.encoding import smart_text
 from django.utils.translation import ugettext_lazy as _
 
+from lazychoices.compat import get_empty_value_display
 from lazychoices.utils import flatten_choices
 
 
@@ -11,12 +12,7 @@ class LazyChoicesFieldListFilter(ChoicesFieldListFilter):
         self.lookup_kwarg_isnull = '{0}__isnull'.format(field_path)
         self.lookup_val_isnull = request.GET.get(self.lookup_kwarg_isnull)
         super(LazyChoicesFieldListFilter, self).__init__(field, request, params, model, model_admin, field_path)
-        if hasattr(model_admin, 'get_empty_value_display'):
-            self.empty_value_display = model_admin.get_empty_value_display()
-        else:
-            # Django < 1.9
-            from django.contrib.admin.views.main import EMPTY_CHANGELIST_VALUE
-            self.empty_value_display = EMPTY_CHANGELIST_VALUE
+        self.empty_value_display = get_empty_value_display(model_admin)
 
     def expected_parameters(self):
         return [self.lookup_kwarg, self.lookup_kwarg_isnull]
