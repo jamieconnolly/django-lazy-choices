@@ -30,6 +30,15 @@ matrix:
 after_success:
   - codecov -e TOX_ENV
 
+deploy:
+  provider: pypi
+  user: $PYPI_USER
+  password:
+    secure: $PYPI_PASSWORD
+  on:
+    repo: jamieconnolly/django-lazy-choices
+    tags: true
+
 notifications:
   email:
     on_failure: always
