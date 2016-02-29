@@ -16,5 +16,5 @@ class Book(LazyChoiceModelMixin, models.Model):
 
 
 class Chapter(models.Model):
-    book = models.ForeignKey(Book, models.CASCADE)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
     name = models.CharField(max_length=40)
