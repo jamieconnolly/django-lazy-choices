@@ -1,10 +1,8 @@
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 
 from lazychoices import LazyChoiceField, LazyChoiceModelMixin
 
 
-@python_2_unicode_compatible
 class Book(LazyChoiceModelMixin, models.Model):
     CATEGORY_CHOICES = [('fiction', 'Fiction'), ('non-fiction', 'Non-Fiction'), ('other', 'Other')]
     GENRE_CHOICES = [
@@ -16,5 +14,7 @@ class Book(LazyChoiceModelMixin, models.Model):
     category = LazyChoiceField(null=False)
     genre = LazyChoiceField(null=True)
 
-    def __str__(self):
-        return self.get_genre_display()
+
+class Chapter(models.Model):
+    book = models.ForeignKey(Book, models.CASCADE)
+    name = models.CharField(max_length=40)
