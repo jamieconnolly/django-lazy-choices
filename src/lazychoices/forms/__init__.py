@@ -1,2 +1,2 @@
 from .fields import LazyChoiceField  # noqa
-from .models import LazyChoiceModelForm  # noqa
+from .models import LazyChoiceInlineFormSet, LazyChoiceModelForm  # noqa

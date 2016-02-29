@@ -2,7 +2,7 @@ from django.forms import TypedChoiceField
 
 
 class LazyChoiceField(TypedChoiceField):
-    def __init__(self, model, choices_name, empty_label='---------', *args, **kwargs):
+    def __init__(self, choices_name, model=None, empty_label='---------', *args, **kwargs):
         super(LazyChoiceField, self).__init__(*args, **kwargs)
         self.choices_name = choices_name
         self.empty_label = empty_label
