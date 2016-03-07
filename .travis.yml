@@ -47,7 +47,5 @@ notifications:
     on_failure: always
     on_success: never
 
-cache:
-  directories:
-    - $HOME/.cache/pip
+cache: pip
 sudo: false
