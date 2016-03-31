@@ -59,6 +59,7 @@ docs/_build/
 target/
 
 # Pyenv
+.python-venv
 .python-version
 
 # IPython Notebook
