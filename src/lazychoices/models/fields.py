@@ -34,7 +34,7 @@ class LazyChoiceField(CharField):
                         hint=None,
                         obj=klass,
                         id='lazychoices.E001',
-                    )
+                    ),
                 ]
             elif any(isinstance(choice, six.string_types) or
                      not is_iterable(choice) or len(choice) != 2
@@ -42,11 +42,11 @@ class LazyChoiceField(CharField):
                 return [
                     checks.Error(
                         ("'{0}' must be an iterable containing "
-                         "(actual value, human readable name) tuples.").format(self.choices_name),
+                         '(actual value, human readable name) tuples.').format(self.choices_name),
                         hint=None,
                         obj=klass,
                         id='lazychoices.E002',
-                    )
+                    ),
                 ]
             else:
                 return []
@@ -61,7 +61,7 @@ class LazyChoiceField(CharField):
                     hint=None,
                     obj=self.model,
                     id='lazychoices.E003',
-                )
+                ),
             ]
         else:
             return []

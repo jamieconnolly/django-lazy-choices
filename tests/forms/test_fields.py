@@ -32,7 +32,7 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
         self.assertEqual('foo', f.clean('foo'))
         self.assertRaisesMessage(
             ValidationError, "'Select a valid choice. abcd is not one of the available choices.'",
-            f.clean, 'abcd'
+            f.clean, 'abcd',
         )
 
     def test_not_required(self):
@@ -46,7 +46,7 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
         self.assertEqual('foo', f.clean('foo'))
         self.assertRaisesMessage(
             ValidationError, "'Select a valid choice. abcd is not one of the available choices.'",
-            f.clean, 'abcd'
+            f.clean, 'abcd',
         )
 
     def test_with_optgroup(self):
@@ -63,7 +63,7 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
         self.assertEqual('other', f.clean('other'))
         self.assertRaisesMessage(
             ValidationError, "'Select a valid choice. invalid is not one of the available choices.'",
-            f.clean, 'invalid'
+            f.clean, 'invalid',
         )
 
     def test_change_model_after_init(self):
@@ -78,10 +78,8 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
 
         self.assertEqual('baz', f.clean('baz'))
         self.assertRaisesMessage(
-            ValidationError,
-            "Select a valid choice. foo is not one of the available choices.",
-            f.clean,
-            'foo'
+            ValidationError, 'Select a valid choice. foo is not one of the available choices.',
+            f.clean, 'foo',
         )
 
     def test_choices_with_field_required(self):

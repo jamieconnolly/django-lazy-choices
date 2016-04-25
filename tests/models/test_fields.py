@@ -110,7 +110,7 @@ class LazyChoiceFieldTests(IsolatedModelsTestCase):
                 hint=None,
                 obj=Model,
                 id='lazychoices.E003',
-            )
+            ),
         ]
         self.assertEqual(errors, expected)
 
