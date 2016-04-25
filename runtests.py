@@ -7,14 +7,14 @@ from django.test.runner import DiscoverRunner
 
 DEFAULT_SETTINGS = dict(
     DATABASES={
-        'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': ':memory:'}
+        'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': ':memory:'},
     },
     INSTALLED_APPS=[
         'django.contrib.auth',
         'django.contrib.contenttypes',
         'tests.admin',
         'tests.forms',
-        'tests.models'
+        'tests.models',
     ],
     SECRET_KEY='notasecret',
 )

@@ -6,6 +6,6 @@ from lazychoices.admin import LazyChoicesFieldListFilter
 class BookAdmin(ModelAdmin):
     list_filter = [
         ('category', LazyChoicesFieldListFilter),
-        ('genre', LazyChoicesFieldListFilter)
+        ('genre', LazyChoicesFieldListFilter),
     ]
     ordering = ['-id']

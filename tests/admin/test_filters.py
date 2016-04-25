@@ -12,30 +12,12 @@ class LazyChoicesFieldListFilterTests(TestCase):
         self.modeladmin = BookAdmin(Book, site)
         self.request_factory = RequestFactory()
 
-        self.crime_book1 = Book.objects.create(
-            title='Hercule Poirot',
-            category='fiction', genre='crime'
-        )
-        self.crime_book2 = Book.objects.create(
-            title='Sherlock Holmes',
-            category='fiction', genre='crime'
-        )
-        self.horror_book = Book.objects.create(
-            title='The Shining',
-            category='fiction', genre='horror'
-        )
-        self.biography_book = Book.objects.create(
-            title='A Child Called It',
-            category='non-fiction', genre='biography'
-        )
-        self.reference_book = Book.objects.create(
-            title='Encyclopedia Britannica',
-            category='non-fiction', genre='reference'
-        )
-        self.unwritten_book = Book.objects.create(
-            title='The Unwritten Book',
-            category='other', genre=None
-        )
+        self.crime_book1 = Book.objects.create(title='Hercule Poirot', category='fiction', genre='crime')
+        self.crime_book2 = Book.objects.create(title='Sherlock Holmes', category='fiction', genre='crime')
+        self.horror_book = Book.objects.create(title='The Shining', category='fiction', genre='horror')
+        self.biography_book = Book.objects.create(title='A Child Called It', category='non-fiction', genre='biography')
+        self.reference_book = Book.objects.create(title='Encyclopedia', category='non-fiction', genre='reference')
+        self.unwritten_book = Book.objects.create(title='The Unwritten Book', category='other', genre=None)
 
     def get_changelist(self, request, model, modeladmin):
         return ChangeList(

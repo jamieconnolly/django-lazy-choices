@@ -27,9 +27,14 @@ setup(
     install_requires=['Django>=1.8,<1.10'],
     extras_require={
         'dev': [
-            'flake8>=2.5,<2.6',
-            'isort>=4.2,<4.3',
-        ]
+            'flake8',
+            'flake8-blind-except',
+            'flake8-commas',
+            'flake8-debugger',
+            'flake8-isort',
+            'flake8-print',
+            'flake8-quotes',
+        ],
     },
     keywords=['django'],
     classifiers=[

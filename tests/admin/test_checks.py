@@ -28,7 +28,7 @@ class LazyChoiceInlineModelAdminChecksTests(TestCase):
                 hint=None,
                 obj=InlineModelAdmin,
                 id='lazychoices.E101',
-            )
+            ),
         ]
         self.assertEqual(errors, expected)
 
@@ -44,6 +44,6 @@ class LazyChoiceInlineModelAdminChecksTests(TestCase):
                 hint=None,
                 obj=InlineModelAdmin,
                 id='lazychoices.E102',
-            )
+            ),
         ]
         self.assertEqual(errors, expected)
