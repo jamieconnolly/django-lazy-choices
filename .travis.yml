@@ -42,10 +42,4 @@ deploy:
     repo: jamieconnolly/django-lazy-choices
     tags: true
 
-notifications:
-  email:
-    on_failure: always
-    on_success: never
-
 cache: pip
-sudo: false
